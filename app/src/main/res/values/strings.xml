@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">Homework</string>
+
+    <!-- TODO: Fragment Names -->
+    <string name="home_fragment">Home Fragment</string>
+    <string name="upload_fragment">Upload Fragment</string>
+    <string name="profile_fragment">Profile Fragment</string>
+    <string name="edit_profile_fragment">Edit Profile</string>
+    <string name="sign_out_fragment">Sign Out</string>
+    <string name="return_to_fragment">return_to_fragment</string>
+    <string name="calling_activity">calling_activity</string>
+    <string name="profile_activity">profile_activity</string>
+
+    <!-- Spinner Profile field -->
+    <string-array name="profile">
+        <item>Student</item>
+        <item>Teacher</item>
+        <item>Parent</item>
+    </string-array>
+
+    <!-- Spinner Classes field -->
+    <string-array name="classes">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <!-- Spinner Sections field -->
+    <string-array name="sections">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+    </string-array>
+
+    <!-- Firebase Messages -->
+    <string name="auth_failed">authentication failed</string>
+    <string name="auth_success">authentication successful</string>
+
+    <!-- Firebase Database Fields -->
+    <string name="dbname_users">users</string>
+    <string name="dbname_user_account_settings">user_account_settings</string>
+    <string name="field_status">status</string>
+    <string name="field_description">description</string>
+    <string name="field_phone_number">phone_number</string>
+    <string name="dbname_user_photos">user_photos</string>
+    <string name="dbname_photos">photos</string>
+    <string name="dbname_text">text</string>
+    <string name="dbname_user_text">user_text</string>
+
+    <!-- Photo Types -->
+    <string name="new_photo">new_photo</string>
+    <string name="profile_photo">profile_photo</string>
+
+    <!-- text -->
+    <string name="photo">Photo</string>
+    <string name="text">Text</string>
+    <string name="selected_image">selected_image</string>
+    <string name="string_post">POST</string>
+    <string name="Teacher">Teacher</string>
+    <string name="string_title">Title</string>
+    <string name="string_description">Write a description...</string>
+
+</resources>

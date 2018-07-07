@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="20dp">
+
+
+            <!-- *********** Middle Section *************-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relLayout2"
+                android:background="@drawable/gray_border_bottom">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/relLayout3"
+                    android:layout_marginTop="25dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:id="@+id/profile_image"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        app:civ_border_color="@color/black"
+                        app:civ_border_width="2dp"
+                        android:src="@color/black"/>
+
+                </RelativeLayout>
+
+                <!-- Display Name Section -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/relLayout4"
+                    android:layout_below="@+id/relLayout3"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/gray_border_bottom">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_profile"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/display_name"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="40dp"
+                        android:textStyle="italic"
+                        android:layout_marginBottom="10sp"/>
+
+                </RelativeLayout>
+
+
+                <!-- Profile Section -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/relLayout5"
+                    android:layout_below="@+id/relLayout4"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/gray_border_bottom">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_profile_user"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvProfile"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginBottom="10sp"/>
+
+                </RelativeLayout>
+
+                <!-- Profile Section -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/relLayout6"
+                    android:layout_below="@+id/relLayout5"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/gray_border_bottom">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_username"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvUsername"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginBottom="10sp"/>
+
+                </RelativeLayout>
+
+                <!-- Status Section -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/relLayout7"
+                    android:layout_below="@+id/relLayout6"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/gray_border_bottom">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_status"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/ic_status"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvStatus"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginBottom="10sp"/>
+
+                </RelativeLayout>
+
+                <!-- Description Section -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/relLayout8"
+                    android:layout_below="@+id/relLayout7"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_description"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/ic_description"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvDescription"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginBottom="10sp"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</merge>
