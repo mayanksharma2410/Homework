@@ -364,7 +364,8 @@ public class FirebaseMethods {
                 profile_photo,
                 status,
                 StringManipulations.condenseUsername(username),
-                profile
+                profile,
+                userID
         );
 
         myRef.child(mContext.getString(R.string.dbname_user_account_settings))

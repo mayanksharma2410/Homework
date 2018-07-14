@@ -113,8 +113,8 @@ public class ProfileFragment extends Fragment {
         ImageLoader.getInstance().init(universalImageLoader.getConfig());
     }
 
-    /**
-     * ****************************************** Firebase ***********************************************************
+    /**     ******************************************* Firebase ***********************************************************
+
      */
 
 

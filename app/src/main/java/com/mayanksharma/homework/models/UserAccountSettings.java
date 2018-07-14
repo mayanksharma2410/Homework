@@ -7,20 +7,29 @@ public class UserAccountSettings {
     private String status;
     private String username;
     private String profile;
+    private String user_id;
 
     public UserAccountSettings(String description, String display_name,
-                               String profile_photo, String status, String username, String profile) {
+                               String profile_photo, String status, String username, String profile, String user_id) {
         this.description = description;
         this.display_name = display_name;
         this.profile_photo = profile_photo;
         this.status = status;
         this.username = username;
         this.profile = profile;
+        this.user_id = user_id;
     }
-
 
     public UserAccountSettings() {
 
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getDescription() {
