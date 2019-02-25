@@ -51,6 +51,7 @@ public class HomeActivity extends AppCompatActivity {
     //private UploadFragment uploadFragment;
     private ProfileFragment profileFragment;
     private BottomNavigationView bottomNavigationView;
+    String currentProfile = "";
 
     //Firebase
     private FirebaseAuth mAuth;
@@ -69,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Log.d(TAG, "onCreate: starting...");
 
-         bottomNavigationView = (BottomNavigationView)findViewById(R.id.BottomNavViewBar);
+        bottomNavigationView = (BottomNavigationView)findViewById(R.id.BottomNavViewBar);
         FrameLayout mMainFrame = (FrameLayout)findViewById(R.id.relLayout2);
 
         //making objects of fragment classes
@@ -89,21 +90,21 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                    switch (item.getItemId()) {
-                        case R.id.ic_house:
-                            setFragment(homeFragment);
-                            return true;
+                switch (item.getItemId()) {
+                    case R.id.ic_house:
+                        setFragment(homeFragment);
+                        return true;
 
-                        case R.id.ic_upload:
-                            //setFragment(uploadFragment);
-                            Intent intent = new Intent(HomeActivity.this, UploadActivity.class);
-                            startActivity(intent);
-                            return true;
+                    case R.id.ic_upload:
+                        //setFragment(uploadFragment);
+                        Intent intent = new Intent(HomeActivity.this, UploadActivity.class);
+                        startActivity(intent);
+                        return true;
 
-                        case R.id.ic_profile:
-                            setFragment(profileFragment);
-                            return true;
-                    }
+                    case R.id.ic_profile:
+                        setFragment(profileFragment);
+                        return true;
+                }
 
                 return false;
             }
@@ -263,9 +264,13 @@ public class HomeActivity extends AppCompatActivity {
     {
         Log.d(TAG, "checkProfile: checking the user profile...");
         UserAccountSettings settings = userSettings.getSettings();
-        String currentProfile = settings.getProfile();
         Log.d(TAG, "onDataChange: Current Profile is... " + currentProfile);
         Toast.makeText(mContext, "current profile is " + currentProfile, Toast.LENGTH_SHORT).show();
+
+        if(settings.getProfile() !=  null && !settings.getProfile().isEmpty())
+        {
+            currentProfile = settings.getProfile();
+        }
 
         if (currentProfile.equals(getString(R.string.Teacher)))
         {

@@ -49,7 +49,6 @@ public class UploadActivity extends AppCompatActivity {
         Log.d(TAG, "getTask: TASK " + getIntent().getFlags());
         return getIntent().getFlags();
     }
-
     private void setupViewPager(){
         SectionsPagerAdapter adapter =  new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new PhotoFragment());

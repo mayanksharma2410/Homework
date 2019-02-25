@@ -6,16 +6,36 @@ public class User {
     private String user_id;
     private String email;
     private String profile;
+    private String classes;
+    private String section;
 
-    public User(String username, long phone_number, String user_id, String email, String profile) {
+    public User(String username, long phone_number, String user_id, String email, String profile, String classes, String section) {
         this.username = username;
         this.phone_number = phone_number;
         this.user_id = user_id;
         this.email = email;
         this.profile = profile;
+        this.classes = classes;
+        this.section = section;
     }
 
     public User() {
+    }
+
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
     }
 
     public String getUsername() {
@@ -66,6 +86,8 @@ public class User {
                 ", user_id='" + user_id + '\'' +
                 ", email='" + email + '\'' +
                 ", profile='" + profile + '\'' +
+                ", classes=" + classes +
+                ", section=" + section +
                 '}';
     }
 }

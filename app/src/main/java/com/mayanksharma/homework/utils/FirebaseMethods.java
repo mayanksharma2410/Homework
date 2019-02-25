@@ -289,8 +289,11 @@ public class FirebaseMethods {
      * @param password
      * @param username
      * @param profile
+     * @param classes
+     * @param section
      */
-    public void registerNewEmail(final String email, String password, final String username, final String profile){
+    public void registerNewEmail(final String email, String password, final String username, final String profile,
+                                 final String classes, final String section){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -306,8 +309,7 @@ public class FirebaseMethods {
 
                         }
                         else if(task.isSuccessful()){
-                            //send verification email
-                            //sendVerificationEmail();
+
 
                             userID = mAuth.getCurrentUser().getUid();
                             Log.d(TAG, "onComplete: Authstate changed: " + userID);
@@ -349,9 +351,10 @@ public class FirebaseMethods {
      * @param status
      * @param profile_photo
      */
-    public void addNewUser(String email, String username, String profile, String description, String status, String profile_photo){
+    public void addNewUser(String email, String username, String profile, String description, String status, String profile_photo,
+                           String classes, String section){
 
-        User user = new User( StringManipulations.condenseUsername(username),  1,  userID, email, profile);
+        User user = new User( StringManipulations.condenseUsername(username),  1,  userID, email, profile, classes, section);
 
         myRef.child(mContext.getString(R.string.dbname_users))
                 .child(userID)
@@ -365,7 +368,9 @@ public class FirebaseMethods {
                 status,
                 StringManipulations.condenseUsername(username),
                 profile,
-                userID
+                userID,
+                classes,
+                section
         );
 
         myRef.child(mContext.getString(R.string.dbname_user_account_settings))

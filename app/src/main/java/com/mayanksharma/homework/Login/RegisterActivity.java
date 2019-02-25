@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,11 +31,11 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
 
     private Context mContext;
-    private String email, username, password, profile;
+    private String email, username, password, profile, classes, section;
     private EditText mEmail, mPassword, mUsername;
-    private TextView loadingPleaseWait;
+    private TextView loadingPleaseWait, classSection;
     private Button btnRegister;
-    private Spinner spinner;
+    private Spinner spinner, spinner2, spinner3;
     private ProgressBar mProgressBar;
 
     //firebase
@@ -45,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
     private DatabaseReference myRef;
 
     private String append = "";
-
+    private int flag = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         initWidgets();
         setupFirebaseAuth();
         init();
+
     }
 
     private void init(){
@@ -69,11 +71,20 @@ public class RegisterActivity extends AppCompatActivity {
                 password = mPassword.getText().toString();
                 profile = spinner.getSelectedItem().toString();
 
+                if (flag == 1)
+                {
+                    classes = "";
+                    section = "";
+                }else {
+                    classes = spinner2.getSelectedItem().toString();
+                    section = spinner3.getSelectedItem().toString();
+                }
+
                 if(checkInputs(email, username, password)){
                     mProgressBar.setVisibility(View.VISIBLE);
                     loadingPleaseWait.setVisibility(View.VISIBLE);
 
-                    firebaseMethods.registerNewEmail(email, password, username, profile);
+                    firebaseMethods.registerNewEmail(email, password, username, profile, classes, section);
                 }
             }
         });
@@ -100,10 +111,16 @@ public class RegisterActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.input_email);
         mUsername = (EditText) findViewById(R.id.input_username);
         spinner = (Spinner)findViewById(R.id.spinner1);
+        spinner2 = (Spinner)findViewById(R.id.spinner2);
+        spinner3 = (Spinner)findViewById(R.id.spinner3);
+        classSection = (TextView)findViewById(R.id.tvClassSection);
         btnRegister = (Button) findViewById(R.id.btn_register);
         mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
         loadingPleaseWait = (TextView) findViewById(R.id.text_pleaseWait);
         mPassword = (EditText) findViewById(R.id.input_password);
+        classSection.setVisibility(View.VISIBLE);
+        spinner2.setVisibility(View.VISIBLE);
+        spinner3.setVisibility(View.VISIBLE);
         mContext = RegisterActivity.this;
         mProgressBar.setVisibility(View.GONE);
         loadingPleaseWait.setVisibility(View.GONE);
@@ -113,6 +130,42 @@ public class RegisterActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(adapter);
 
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.classes));
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner2.setAdapter(adapter2);
+
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.sections));
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner3.setAdapter(adapter3);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Toast.makeText(getBaseContext(), parent.getItemAtPosition(position) + " selected", Toast.LENGTH_SHORT).show();
+
+                if (parent.getItemAtPosition(position).equals(getString(R.string.profile_teacher)))
+                {
+                    classSection.setVisibility(View.GONE);
+                    spinner2.setVisibility(View.GONE);
+                    spinner3.setVisibility(View.GONE);
+                    flag = 1;
+                }
+                else
+                {
+                    classSection.setVisibility(View.VISIBLE);
+                    spinner2.setVisibility(View.VISIBLE);
+                    spinner3.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -155,14 +208,14 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             //1st check: Make sure the username is not already in use
-                            if(firebaseMethods.checkIfUsernameExists(username, dataSnapshot)){
-                                append = myRef.push().getKey().substring(3,10);
-                                Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
-                            }
-                            username = username + append;
+//                            if(firebaseMethods.checkIfUsernameExists(username, dataSnapshot)){
+//                                append = myRef.push().getKey().substring(3,10);
+//                                Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
+//                            }
+//                            username = username + append;
 
                             //add new user to the database
-                            firebaseMethods.addNewUser(email, username, profile , "", "", "");
+                            firebaseMethods.addNewUser(email, username, profile, "", "", "", classes, section);
 
                             Toast.makeText(mContext, "Signup successful.", Toast.LENGTH_SHORT).show();
 

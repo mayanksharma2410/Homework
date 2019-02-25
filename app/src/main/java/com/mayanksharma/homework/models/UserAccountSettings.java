@@ -8,9 +8,12 @@ public class UserAccountSettings {
     private String username;
     private String profile;
     private String user_id;
+    private String classes;
+    private String section;
 
     public UserAccountSettings(String description, String display_name,
-                               String profile_photo, String status, String username, String profile, String user_id) {
+                               String profile_photo, String status, String username, String profile, String user_id,
+                               String classes, String section) {
         this.description = description;
         this.display_name = display_name;
         this.profile_photo = profile_photo;
@@ -18,10 +21,28 @@ public class UserAccountSettings {
         this.username = username;
         this.profile = profile;
         this.user_id = user_id;
+        this.classes = classes;
+        this.section = section;
     }
 
     public UserAccountSettings() {
 
+    }
+
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
     }
 
     public String getUser_id() {
@@ -89,6 +110,9 @@ public class UserAccountSettings {
                 ", status='" + status + '\'' +
                 ", username='" + username + '\'' +
                 ", profile='" + profile + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", classes='" + classes + '\'' +
+                ", section='" + section + '\'' +
                 '}';
     }
 }

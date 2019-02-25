@@ -72,5 +72,10 @@
     <string name="Teacher">Teacher</string>
     <string name="string_title">Title</string>
     <string name="string_description">Write a description...</string>
+    <string name="profile_student">Student</string>
+    <string name="profile_parent">Parent</string>
+    <string name="profile_teacher">Teacher</string>
+    <string name="String_class_and_section">Class and Section:</string>
+    <string name="String_password_criteria">(Password length should be minimum 6)</string>
 
 </resources>

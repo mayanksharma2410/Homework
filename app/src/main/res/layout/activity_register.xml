@@ -64,6 +64,12 @@
                 android:hint="Password"
                 android:id="@+id/input_password"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/String_password_criteria"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/light_blue"/>
         </android.support.design.widget.TextInputLayout>
 
         <RelativeLayout
@@ -85,6 +91,40 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner1"
                 android:layout_toRightOf="@+id/tvProfile"
+                android:layout_marginLeft="15dp">
+
+            </Spinner>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/String_class_and_section"
+                android:textSize="18sp"
+                android:id="@+id/tvClassSection"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner2"
+                android:layout_toRightOf="@+id/tvClassSection"
+                android:layout_marginLeft="15dp">
+
+            </Spinner>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner3"
+                android:layout_toRightOf="@+id/spinner2"
                 android:layout_marginLeft="15dp">
 
             </Spinner>

@@ -1,5 +1,6 @@
 package com.mayanksharma.homework.Settings;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mayanksharma.homework.R;
+import com.mayanksharma.homework.Upload.NextActivity;
 import com.mayanksharma.homework.Upload.UploadActivity;
 import com.mayanksharma.homework.models.UserAccountSettings;
 import com.mayanksharma.homework.models.UserSettings;
@@ -41,6 +43,7 @@ public class EditProfileFragment extends Fragment{
 
     private static final String TAG = "EditProfileFragment";
     private CircleImageView mProfilePhoto;
+
 
     //Firebase
     private FirebaseAuth mAuth;
@@ -165,6 +168,8 @@ public class EditProfileFragment extends Fragment{
                 }
 
 
+                Toast.makeText(getActivity(), "Changes Saved...", Toast.LENGTH_SHORT).show();
+                getActivity().finish();
             }
 
             @Override
@@ -172,6 +177,7 @@ public class EditProfileFragment extends Fragment{
 
             }
         });
+
     }
 
 
