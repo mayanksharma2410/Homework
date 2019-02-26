@@ -1,6 +1,9 @@
 package com.mayanksharma.homework.models;
 
-public class Text {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Text implements Parcelable{
     private String title;
     private String description;
     private String classes;
@@ -81,5 +84,44 @@ public class Text {
                 ", date_created='" + date_created + '\'' +
                 ", user_id='" + user_id + '\'' +
                 '}';
+    } @Override
+    public int describeContents() {
+        return 0;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(description);
+        dest.writeString(classes);
+        dest.writeString(section);
+        dest.writeString(date_created);
+        dest.writeString(title);
+        dest.writeString(user_id);
+    }
+
+    protected Text(Parcel in) {
+        description = in.readString();
+        classes = in.readString();
+        section = in.readString();
+        date_created = in.readString();
+        title = in.readString();
+        user_id = in.readString();
+    }
+
+    public static final Creator<Text> CREATOR = new Creator<Text>() {
+        @Override
+        public Text createFromParcel(Parcel in) {
+            return new Text(in);
+        }
+
+        @Override
+        public Text[] newArray(int size) {
+            return new Text[size];
+        }
+    };
+
+    public static Creator<Text> getCREATOR() {
+        return CREATOR;
+    }
+
 }

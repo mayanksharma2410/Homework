@@ -18,6 +18,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mayanksharma.homework.R;
 import com.mayanksharma.homework.models.Photo;
+import com.mayanksharma.homework.models.Text;
 import com.mayanksharma.homework.models.UserAccountSettings;
 import com.mayanksharma.homework.utils.MainfeedListAdapter;
 
@@ -35,6 +36,7 @@ public class HomeFragment extends Fragment {
     private static final String TAG = "HomeFragment";
     //variables
     private ArrayList<Photo> mPhotos;
+    private ArrayList<Text> mText;
     private ListView mListView;
     private MainfeedListAdapter mAdapter;
 
@@ -47,6 +49,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         mListView = (ListView)view.findViewById(R.id.listView);
         mPhotos = new ArrayList<>();
+        mText = new ArrayList<>();
 
         getIt();
 
@@ -67,6 +70,14 @@ public class HomeFragment extends Fragment {
                 .orderByChild(getString(R.string.field_user_id));
 
         Log.d(TAG, "getIt: query value is..." + query);
+
+
+        Query query1 = reference
+                .child(getString(R.string.dbname_user_text))
+                .orderByChild(getString(R.string.field_user_id));
+
+        Log.d(TAG, "getIt: query value is..." + query);
+
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -91,6 +102,31 @@ public class HomeFragment extends Fragment {
 
                 }
                 displayPhoto();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        query1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot singleSnapshot: dataSnapshot.getChildren())
+                {
+                    Log.d(TAG, "onDataChange: okay text retrieving is running...");
+
+                    Text text = new Text();
+                    UserAccountSettings settings = new UserAccountSettings();
+                    Map<String, Object> objectMap = (HashMap<String, Object>) singleSnapshot.getValue();
+
+                    text.setDescription(objectMap.get(getString(R.string.field_description)).toString());
+                    text.setUser_id(objectMap.get(getString(R.string.field_user_id)).toString());
+                    text.setDate_created(objectMap.get(getString(R.string.field_date_created)).toString());
+                    mText.add(text);
+                }
             }
 
             @Override
